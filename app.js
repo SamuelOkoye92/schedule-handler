@@ -13,14 +13,21 @@ let editFlag = false;
 let editID ="";
 // ****** EVENT LISTENERS **********
 // submit form
-form.addEventListener("submit", addItem)
+form.addEventListener("submit", addItem);
 // ****** FUNCTIONS **********
 function addItem(e) {
     e.preventDefault();
     const value = grocery.value;
     const id = new Date().getTime().toString();
-    if(value !== '' && editFlag = true) {}
-    else{}
+    if(value !== '' && editFlag === true) {
+        console.log('add items to the list');
+    }
+    else if (value !== "" && editFlag === true){
+        console.log('editing');
+    } else {
+        alert.textContent = 'empty value';
+        alert.classList.add('alert-danger');
+    }
 }
 // ****** LOCAL STORAGE **********
 
