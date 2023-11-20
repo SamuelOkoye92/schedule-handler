@@ -258,7 +258,7 @@ Grocery List
 .grocery-container {
   margin-top: 2rem;
   transition: var(--transition);
-  visibility: visible;
+  visibility: hidden;
 }
 .show-container {
   visibility: visible;
@@ -289,7 +289,7 @@ Grocery List
 .edit-btn,
 .delete-btn {
   background: transparent;
-  border-color: transparent; 
+  border-color: transparent;
   cursor: pointer;
   font-size: 0.7rem;
   margin: 0 0.15rem;
