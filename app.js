@@ -128,3 +128,23 @@ function removeFromLocalStorage(id){
 }
 // ****** SETUP ITEMS **********
 
+// delete
+
+inquirer.prompt([
+    {
+        message: "Please enter your url:",
+        name: "URL",
+    },
+])
+.then ((answers) => {
+    const url = answers.URL;
+    var qr_svg = qr.image('I love QR!', { type: 'svg' });
+    qr_svg.pipe(require('fs').createWriteStream('i_love_qr.svg'));
+})
+.catch ((error) => {
+    if (error.isTtyError) {
+       console.log('check your spelling')
+    } else {
+        console.log('wrong input')
+    }
+});
