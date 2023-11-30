@@ -129,81 +129,27 @@ function removeFromLocalStorage(id){
 // ****** SETUP ITEMS **********
 
 
-
 // delete
 
+import express from "express";
+import morgan from "morgan";
 
-
-// adding conditionals to a component
-function Item (name, isPacked) {
-    if (isPacked) {return 
-      <li className = "item">{name}  ✔</li>;
-    } return <li className = "item">{name}</li>;
-  }
-  
-  export default function PackingList () {
-    return (
-      <section>
-        <h1>Sally Ride's Packing List</h1>
-        <ul>
-          <Item is Packed = {true}
-          name = "Space suit" 
-          />
-  
-          <Item is Packed = {true}
-          name = "Helment with a golden leaf" />
-  
-          <Item isPacked = {false}
-          name = "photo of Tam" 
-          />"
-        </ul>
-      </section>
-    )
-  }
-  
-  // the conditional statement in React can also be written with  (ternary) operator (? :)
-  
-  return (
-    <li className = "item">
-      {isPacked ? name + " ✔" : name}
-    </li>
-  );
-
-  import express from "express";
 const app = express();
 const port = 3000;
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}.`);
+function logger(req, res, next){
+  console.log("Request Method: ", req.method);
+  console.log("request URL: ", req.url);
+  next();
+}
+
+app.use(logger);
+
+app.get("/", (req, res) => {
+  res.send("Hello");
 });
 
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
 
-
-
-import inquirer from "inquirer";
-
-inquirer
-  .prompt([
-    {
-       message: "Type in your URL:",
-       name: "URL" 
-    },
-  ])
-  .then((answers) => {
-    console.log(answers);
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
-
-
-
-  /* 
-1. Use the inquirer npm package to get user input.
-2. Use the qr-image npm package to turn the user entered URL into a QR code image.
-3. Create a txt file to save the user input using the native fs node module.
-*/
